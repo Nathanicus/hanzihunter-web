@@ -9,9 +9,11 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <title>HanziHunter — Learn the 3,000 Chinese characters that matter</title>
 <style>
+  /* No vertical centering: the page is taller than a viewport now the
+     panels are in, and centered flex overflow clips the top edge. */
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
          margin: 0; min-height: 100vh; display: flex; flex-direction: column; align-items: center;
-         justify-content: center; background: #131717; color: #e8e0d8; text-align: center; padding: 24px; }
+         background: #131717; color: #e8e0d8; text-align: center; padding: 9vh 24px 48px; }
   h1 { font-size: 2.4rem; margin: 0.2em 0; }
   p { color: #a09890; max-width: 28rem; line-height: 1.6; }
   .store { display: inline-block; margin-top: 28px; }
@@ -20,17 +22,33 @@
   .links a { color: #5BB957; text-decoration: none; margin: 0 12px; font-weight: 600; }
   .links a:hover { text-decoration: underline; }
   .mark { font-size: 3rem; color: #499F46; font-weight: 800; letter-spacing: 2px; }
+  .features { color: #7d766f; font-size: 0.85rem; letter-spacing: 0.3px; }
+  .points { list-style: none; padding: 0; margin: 6px 0 0; color: #a09890; line-height: 2; }
+  .points li::before { content: "· "; color: #5BB957; font-weight: 700; }
+  .shots { display: flex; gap: 16px; margin-top: 36px; flex-wrap: wrap; justify-content: center; }
+  .shots img { width: min(260px, 78vw); height: auto; border-radius: 18px; }
 </style>
 </head>
 <body>
   <div class="mark">HH</div>
   <h1>HanziHunter</h1>
   <p>Master the 3,000 characters that matter to read 99% of everyday Chinese. Minutes a day, free to start.</p>
+  <ul class="points">
+    <li>Smart spaced repetition schedules every review</li>
+    <li>9,000+ HSK words carry you from HSK 1 to 9</li>
+    <li>Learn Chinese from your lock screen with the free widget</li>
+  </ul>
+  <p class="features">Writing practice · Per-level HSK decks · Chinese idioms · Themes to make it yours</p>
   <!-- Locale-neutral link: Apple routes each visitor to their own storefront -->
   <a class="store" href="https://apps.apple.com/app/hanzihunter-learn-chinese/id6780400560">
     <img src="https://toolbox.marketingtools.apple.com/api/v2/badges/download-on-the-app-store/black/en-us"
          alt="Download on the App Store" height="54">
   </a>
+  <div class="shots">
+    <img src="img/panel-discover.jpg" alt="Discover feed: browse 3,000 Chinese characters" loading="lazy">
+    <img src="img/panel-study.jpg" alt="Study session: spaced-repetition review of a character" loading="lazy">
+    <img src="img/panel-lockwidget.jpg" alt="Lock-screen widget: learn Chinese at a glance" loading="lazy">
+  </div>
   <div class="links">
     <a href="privacy.html">Privacy Policy</a>
     <a href="support.html">Support</a>
