@@ -28,20 +28,20 @@
   .wrap{max-width:1040px;margin:0 auto;padding:0 22px}
 
   /* header */
-  header{display:flex;align-items:center;gap:12px;padding:22px 0 0}
+  header{display:flex;align-items:center;justify-content:center;gap:12px;padding:22px 0 0}
   header svg{width:36px;height:36px;border-radius:9px;flex:none}
   header .name{font-family:"Karla",sans-serif;font-weight:600;font-size:17px;letter-spacing:.01em}
 
   /* hero */
-  .hero{padding:52px 0 26px;text-align:left;max-width:640px}
+  .hero{padding:52px 0 26px;text-align:center;max-width:640px;margin:0 auto}
   .hero h1{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:clamp(40px,8vw,64px);
     line-height:1.02;letter-spacing:-.01em;margin:0 0 18px;text-wrap:balance}
   .hero h1 em{font-style:italic;color:var(--brass)}
-  .hero p{font-size:19px;color:var(--dim);margin:0 0 26px;max-width:36rem}
+  .hero p{font-size:19px;color:var(--dim);margin:0 auto 26px;max-width:36rem}
   .hero p strong{color:var(--bone);font-weight:600}
   .cta{display:inline-block;line-height:0}
   .cta img{display:block;height:56px}
-  .facts{display:flex;flex-wrap:wrap;gap:8px 18px;margin:22px 0 0;padding:0;list-style:none;
+  .facts{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 18px;margin:22px 0 0;padding:0;list-style:none;
     font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--dim)}
   .facts li::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--jade);margin:0 8px 2px 0}
 
@@ -51,7 +51,7 @@
   .rail::-webkit-scrollbar{display:none}
   .rail figure{flex:0 0 auto;width:min(66vw,246px);margin:0;scroll-snap-align:start}
   .rail img{display:block;width:100%;height:auto;border-radius:22px;border:1px solid var(--rule);background:var(--ink-2)}
-  .rail figcaption{font-size:13px;color:var(--dim);margin:10px 2px 0;line-height:1.4}
+  .rail figcaption{font-size:13px;color:var(--dim);margin:10px 2px 0;line-height:1.4;text-align:center}
   .rail figcaption b{color:var(--bone);font-weight:600}
   @media (min-width:900px){
     .rail{display:grid;grid-template-columns:repeat(6,1fr);overflow:visible;margin:38px 0 0;padding:0}
@@ -61,7 +61,7 @@
   /* three reasons */
   .why{display:grid;grid-template-columns:1fr;gap:1px;background:var(--rule);border:1px solid var(--rule);margin:56px 0 0}
   @media (min-width:700px){ .why{grid-template-columns:repeat(3,1fr)} }
-  .why div{background:var(--ink);padding:24px 22px 26px}
+  .why div{background:var(--ink);padding:24px 22px 26px;text-align:center}
   .why .zh{font-family:"Noto Serif SC",serif;font-size:40px;line-height:1;color:var(--bone);margin:0 0 12px}
   .why .zh small{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--brass);letter-spacing:.08em;margin-left:10px;vertical-align:middle}
   .why h2{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:26px;margin:0 0 8px;line-height:1.15}
@@ -73,7 +73,7 @@
   .again p{font-family:"Instrument Serif",Georgia,serif;font-size:clamp(26px,5vw,36px);line-height:1.15;margin:0 0 22px;text-wrap:balance}
   .again small{display:block;color:var(--dim);font-size:14px;margin-top:14px}
 
-  footer{border-top:1px solid var(--rule);margin-top:40px;padding:22px 0 44px;display:flex;flex-wrap:wrap;gap:8px 22px;
+  footer{border-top:1px solid var(--rule);margin-top:40px;padding:22px 0 44px;display:flex;flex-wrap:wrap;justify-content:center;gap:8px 22px;
     font-size:13px;color:var(--dim)}
   footer a{color:var(--dim);text-decoration:none}
   footer a:hover{color:var(--bone)}
@@ -103,9 +103,8 @@
       <img src="https://toolbox.marketingtools.apple.com/api/v2/badges/download-on-the-app-store/black/en-us" alt="Download on the App Store">
     </a>
     <ul class="facts">
-      <li>3,255 characters</li>
+      <li>Spaced repetition for flashcards (same as Anki)</li>
       <li>9,000+ HSK words</li>
-      <li>FSRS scheduling, as in Anki</li>
       <li>Works offline</li>
     </ul>
   </section>
@@ -128,12 +127,12 @@
     <div>
       <p class="zh">忘 <small>wàng · forget</small></p>
       <h2>Reviews that land on time</h2>
-      <p>Built on <strong>FSRS, the spaced-repetition algorithm used by Anki</strong>. Each character comes back just before you'd forget it, so you spend minutes, not hours.</p>
+      <p><strong>The same spaced-repetition scheduler as Anki</strong> (FSRS). Each character comes back just before you'd forget it, so you spend minutes, not hours.</p>
     </div>
     <div>
       <p class="zh">读 <small>dú · read</small></p>
       <h2>Reading from day one</h2>
-      <p>Short passages written only with the characters you've learned. Tap any character to open it. <strong>Pinyin and English stay hidden until you ask.</strong></p>
+      <p>Short passages written <strong>only with the characters you've learned</strong>. Tap any character to open it. Pinyin and English stay hidden until you ask.</p>
     </div>
   </section>
 
@@ -148,7 +147,6 @@
   <footer>
     <a href="privacy.html">Privacy</a>
     <a href="support.html">Support</a>
-    <span class="sp"></span>
     <span>© 2026 HanziHunter</span>
   </footer>
 
