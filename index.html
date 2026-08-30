@@ -5,53 +5,153 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- iOS Safari shows a native "open in the App Store" banner for the app -->
 <meta name="apple-itunes-app" content="app-id=6780400560">
+<meta name="description" content="Learn the 3,000 Chinese characters that matter, in the order they actually appear. Read 99% of everyday Chinese. Free to start.">
+<meta property="og:title" content="HanziHunter — Read 99% of everyday Chinese">
+<meta property="og:description" content="Learn the 3,000 characters that matter, in the order they actually appear. Minutes a day.">
+<meta property="og:image" content="https://hanzihunter.com/img/shot-paragraph.jpg">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<title>HanziHunter — Learn the 3,000 Chinese characters that matter</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Karla:wght@400;600&family=IBM+Plex+Mono:wght@400;500&family=Noto+Serif+SC:wght@400;600&display=swap">
+<title>HanziHunter — Read 99% of everyday Chinese</title>
 <style>
-  /* No vertical centering: the page is taller than a viewport now the
-     panels are in, and centered flex overflow clips the top edge. */
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-         margin: 0; min-height: 100vh; display: flex; flex-direction: column; align-items: center;
-         background: #131717; color: #e8e0d8; text-align: center; padding: 9vh 24px 48px; }
-  h1 { font-size: 2.4rem; margin: 0.2em 0; }
-  p { color: #a09890; max-width: 28rem; line-height: 1.6; }
-  .store { display: inline-block; margin-top: 28px; }
-  .store img { display: block; }
-  .links { margin-top: 28px; }
-  .links a { color: #5BB957; text-decoration: none; margin: 0 12px; font-weight: 600; }
-  .links a:hover { text-decoration: underline; }
-  .mark { font-size: 3rem; color: #499F46; font-weight: 800; letter-spacing: 2px; }
-  .features { color: #7d766f; font-size: 0.85rem; letter-spacing: 0.3px; }
-  .points { list-style: none; padding: 0; margin: 6px 0 0; color: #a09890; line-height: 2; }
-  .points li::before { content: "· "; color: #5BB957; font-weight: 700; }
-  .shots { display: flex; gap: 16px; margin-top: 36px; flex-wrap: wrap; justify-content: center; }
-  .shots img { width: min(260px, 78vw); height: auto; border-radius: 18px; }
+  :root{
+    --ink:#0E100F; --ink-2:#161917; --ink-3:#1F2320; --rule:#2A2F2B;
+    --bone:#EDE6DC; --dim:#A8A69E; --jade:#499F46; --jade-bright:#5BB957; --brass:#E0B27C;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+  body{margin:0;background:var(--ink);color:var(--bone);font-family:"Karla",-apple-system,system-ui,sans-serif;
+    font-size:17px;line-height:1.55;font-weight:400}
+  a{color:inherit}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 22px}
+
+  /* header */
+  header{display:flex;align-items:center;gap:12px;padding:22px 0 0}
+  header svg{width:36px;height:36px;border-radius:9px;flex:none}
+  header .name{font-family:"Karla",sans-serif;font-weight:600;font-size:17px;letter-spacing:.01em}
+
+  /* hero */
+  .hero{padding:52px 0 26px;text-align:left;max-width:640px}
+  .hero h1{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:clamp(40px,8vw,64px);
+    line-height:1.02;letter-spacing:-.01em;margin:0 0 18px;text-wrap:balance}
+  .hero h1 em{font-style:italic;color:var(--brass)}
+  .hero p{font-size:19px;color:var(--dim);margin:0 0 26px;max-width:36rem}
+  .hero p strong{color:var(--bone);font-weight:600}
+  .cta{display:inline-block;line-height:0}
+  .cta img{display:block;height:56px}
+  .facts{display:flex;flex-wrap:wrap;gap:8px 18px;margin:22px 0 0;padding:0;list-style:none;
+    font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--dim)}
+  .facts li::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--jade);margin:0 8px 2px 0}
+
+  /* screens: a horizontal rail on phones, a grid on wide screens */
+  .rail{margin:38px -22px 0;padding:0 22px 8px;display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .rail::-webkit-scrollbar{display:none}
+  .rail figure{flex:0 0 auto;width:min(66vw,246px);margin:0;scroll-snap-align:start}
+  .rail img{display:block;width:100%;height:auto;border-radius:22px;border:1px solid var(--rule);background:var(--ink-2)}
+  .rail figcaption{font-size:13px;color:var(--dim);margin:10px 2px 0;line-height:1.4}
+  .rail figcaption b{color:var(--bone);font-weight:600}
+  @media (min-width:900px){
+    .rail{display:grid;grid-template-columns:repeat(6,1fr);overflow:visible;margin:38px 0 0;padding:0}
+    .rail figure{width:auto}
+  }
+
+  /* three reasons */
+  .why{display:grid;grid-template-columns:1fr;gap:1px;background:var(--rule);border:1px solid var(--rule);margin:56px 0 0}
+  @media (min-width:700px){ .why{grid-template-columns:repeat(3,1fr)} }
+  .why div{background:var(--ink);padding:24px 22px 26px}
+  .why .zh{font-family:"Noto Serif SC",serif;font-size:40px;line-height:1;color:var(--bone);margin:0 0 12px}
+  .why .zh small{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--brass);letter-spacing:.08em;margin-left:10px;vertical-align:middle}
+  .why h2{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:26px;margin:0 0 8px;line-height:1.15}
+  .why p{margin:0;color:var(--dim);font-size:15.5px}
+  .why p strong{color:var(--bone);font-weight:600}
+
+  /* closing CTA */
+  .again{text-align:center;padding:64px 0 24px}
+  .again p{font-family:"Instrument Serif",Georgia,serif;font-size:clamp(26px,5vw,36px);line-height:1.15;margin:0 0 22px;text-wrap:balance}
+  .again small{display:block;color:var(--dim);font-size:14px;margin-top:14px}
+
+  footer{border-top:1px solid var(--rule);margin-top:40px;padding:22px 0 44px;display:flex;flex-wrap:wrap;gap:8px 22px;
+    font-size:13px;color:var(--dim)}
+  footer a{color:var(--dim);text-decoration:none}
+  footer a:hover{color:var(--bone)}
+  footer .sp{flex:1}
+  @media (prefers-reduced-motion:reduce){ html{scroll-behavior:auto} }
 </style>
 </head>
 <body>
-  <div class="mark">HH</div>
-  <h1>HanziHunter</h1>
-  <p>Master the 3,000 characters that matter to read 99% of everyday Chinese. Minutes a day, free to start.</p>
-  <ul class="points">
-    <li>Smart spaced repetition schedules every review</li>
-    <li>9,000+ HSK words carry you from HSK 1 to 9</li>
-    <li>Learn Chinese from your lock screen with the free widget</li>
-  </ul>
-  <p class="features">Writing practice · Per-level HSK decks · Chinese idioms · Themes to make it yours</p>
-  <!-- Locale-neutral link: Apple routes each visitor to their own storefront -->
-  <a class="store" href="https://apps.apple.com/app/hanzihunter-learn-chinese/id6780400560">
-    <img src="https://toolbox.marketingtools.apple.com/api/v2/badges/download-on-the-app-store/black/en-us"
-         alt="Download on the App Store" height="54">
-  </a>
-  <div class="shots">
-    <img src="img/panel-discover.jpg" alt="Discover feed: browse 3,000 Chinese characters" loading="lazy">
-    <img src="img/panel-study.jpg" alt="Study session: spaced-repetition review of a character" loading="lazy">
-    <img src="img/panel-lockwidget.jpg" alt="Lock-screen widget: learn Chinese at a glance" loading="lazy">
+<div class="wrap">
+
+  <header>
+    <!-- the hook: 竖弯钩, the calligraphic stroke that is also a fishhook -->
+    <svg viewBox="0 0 100 100" aria-hidden="true">
+      <rect width="100" height="100" fill="#499F46"/>
+      <path d="M37 13 L26 -8" stroke="#0E100F" stroke-width="2.6" stroke-linecap="round" fill="none" opacity=".8"/>
+      <circle cx="37" cy="18" r="5.5" fill="none" stroke="#0E100F" stroke-width="3.8"/>
+      <path d="M37 30 L37 56 Q37 80 59 80 L71 80 L69 58" fill="none" stroke="#0E100F" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <span class="name">HanziHunter</span>
+  </header>
+
+  <section class="hero">
+    <h1>Read <em>99%</em> of everyday Chinese.</h1>
+    <p>Learn the <strong>3,000 characters that matter</strong>, in the order they actually appear in real text — so the first hundred you learn are already 43% of everything you'll read. A few minutes a day. Free to start.</p>
+    <!-- Locale-neutral link: Apple routes each visitor to their own storefront -->
+    <a class="cta" href="https://apps.apple.com/app/hanzihunter-learn-chinese/id6780400560">
+      <img src="https://toolbox.marketingtools.apple.com/api/v2/badges/download-on-the-app-store/black/en-us" alt="Download on the App Store">
+    </a>
+    <ul class="facts">
+      <li>3,255 characters</li>
+      <li>9,000+ HSK words</li>
+      <li>FSRS scheduling, as in Anki</li>
+      <li>Works offline</li>
+    </ul>
+  </section>
+
+  <div class="rail" aria-label="Screens from the app">
+    <figure><img src="img/shot-paragraph.jpg" alt="A short passage written only with characters at your level" loading="lazy" width="600" height="1305"><figcaption><b>Read at your level.</b> Passages built only from characters you know.</figcaption></figure>
+    <figure><img src="img/panel-study.jpg" alt="A study session card" loading="lazy"><figcaption><b>Review, not cram.</b> FSRS shows each card right before you'd forget it.</figcaption></figure>
+    <figure><img src="img/shot-character.jpg" alt="A character page with pinyin, meaning and the words it appears in" loading="lazy" width="600" height="1305"><figcaption><b>Every character, whole.</b> Pinyin, meaning, words, etymology, how it's built.</figcaption></figure>
+    <figure><img src="img/panel-discover.jpg" alt="The Discover feed" loading="lazy"><figcaption><b>Swipe through 3,000.</b> Frequency order, one card at a time.</figcaption></figure>
+    <figure><img src="img/shot-idiom.jpg" alt="An idiom card with its literal meaning" loading="lazy" width="600" height="1305"><figcaption><b>Idioms, ranked.</b> The 161 chengyu worth knowing, most common first.</figcaption></figure>
+    <figure><img src="img/panel-lockwidget.jpg" alt="The lock-screen widget" loading="lazy"><figcaption><b>On your lock screen.</b> A character a day without opening the app.</figcaption></figure>
   </div>
-  <div class="links">
-    <a href="privacy.html">Privacy Policy</a>
+
+  <section class="why">
+    <div>
+      <p class="zh">的 <small>#1</small></p>
+      <h2>The right order</h2>
+      <p>Textbooks teach by topic. Real Chinese is skewed: <strong>100 characters cover 43%</strong> of text, 500 cover 78%, 1,000 cover 90%. HanziHunter teaches in that order, so reading starts early.</p>
+    </div>
+    <div>
+      <p class="zh">忘 <small>wàng · forget</small></p>
+      <h2>Reviews that land on time</h2>
+      <p>Built on <strong>FSRS, the spaced-repetition algorithm used by Anki</strong>. Each character comes back just before you'd forget it, so you spend minutes, not hours.</p>
+    </div>
+    <div>
+      <p class="zh">读 <small>dú · read</small></p>
+      <h2>Reading from day one</h2>
+      <p>Short passages written only with the characters you've learned. Tap any character to open it. <strong>Pinyin and English stay hidden until you ask.</strong></p>
+    </div>
+  </section>
+
+  <section class="again">
+    <p>Three thousand characters, one at a time,<br>in the order that pays off soonest.</p>
+    <a class="cta" href="https://apps.apple.com/app/hanzihunter-learn-chinese/id6780400560">
+      <img src="https://toolbox.marketingtools.apple.com/api/v2/badges/download-on-the-app-store/black/en-us" alt="Download on the App Store">
+    </a>
+    <small>Free to start. Premium unlocks the full deck, writing practice and games.</small>
+  </section>
+
+  <footer>
+    <a href="privacy.html">Privacy</a>
     <a href="support.html">Support</a>
-  </div>
+    <span class="sp"></span>
+    <span>© 2026 HanziHunter</span>
+  </footer>
+
+</div>
 </body>
 </html>
